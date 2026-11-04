@@ -511,7 +511,8 @@ const DBD_KILLERS = [
                 ctx.moveTo(centerX, centerY);
                 ctx.arc(centerX, centerY, radius, startAngle, endAngle);
                 ctx.closePath();
-                ctx.fillStyle = COLOR_PALETTE[i % COLOR_PALETTE.length];
+                // โค้ดใหม่ - สุ่มเลือกสีจากพาเลตต์ไม่ให้ซ้ำตำแหน่งเดิม
+                ctx.fillStyle = COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)];
                 ctx.fill();
 
                 // Slice Border
