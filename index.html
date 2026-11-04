@@ -144,6 +144,9 @@
                         <i class="fa-solid fa-list-check text-cyan-400"></i> รายชื่อในวงล้อ
                     </h3>
                     <div class="flex gap-2">
+                        <button onclick="shuffleCustomWheel()" class="bg-red-500 hover:bg-red-900 text-white px-4 py-2 rounded-lg font-medium transition flex items-center gap-2">
+    <i class="fa-solid fa-shuffle"></i> สลับ
+</button>
                         <button onclick="resetCustomPresets()" class="text-xs bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1.5 rounded-lg border border-gray-700 transition">
                             <i class="fa-solid fa-rotate-left mr-1"></i> ค่าเริ่มต้น
                         </button>
@@ -191,10 +194,12 @@
                     <canvas id="dbdCanvas" class="w-full h-full rounded-full cursor-pointer transition-transform duration-100"></canvas>
                     
                     <!-- Center Spin Button & Live Preview Image -->
-            <button onclick="spinDbdWheel()" id="spin-dbd-btn" 
+            <button onclick="spinDbdWheel()" id="spin-dbd-btn"
+             
                 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-[#12141c] rounded-full border-4 border-[#ff2a5f] shadow-2xl hover:scale-105 active:scale-95 transition-all flex flex-col items-center justify-center overflow-hidden z-10 neon-glow-red group">
                 
                 <!-- Portrait Preview inside Center Circle -->
+
                 <img id="dbd-center-portrait" src="" 
                     class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition" alt="Killer Preview">
                 
@@ -202,7 +207,9 @@
                     <span class="font-black text-white text-base tracking-wider">หมุน!</span>
                     <i class="fa-solid fa-skull text-red-400 text-xs mt-0.5"></i>
                 </div>
+                
             </button>
+        
                 </div>
 
                 <!-- Info Note -->
@@ -218,6 +225,9 @@
                     <h3 class="text-md font-bold text-white flex items-center gap-2">
                         <i class="fa-solid fa-users-slash text-red-500"></i> รายชื่อ Killer ทั้งหมด (45)
                     </h3>
+                    <button onclick="shuffleDbdWheel()" class="mt-2 bg-red-500 hover:bg-red-900 text-white px-4 py-2 rounded-lg font-medium transition flex items-center gap-2 justify-center w-full">
+    <i class="fa-solid fa-shuffle"></i> สลับ
+</button>
                 </div>
 
                 <!-- Search Input -->
@@ -300,6 +310,7 @@
 
     <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
+        // ฟังก์ชันสลับตำแหน่งข้อมูลในอาร์เรย์แบบสุ่ม (วางไว้บนสุดของแท็ก script)
         /* Helper function to generate SVG Data URLs for Killers so images ALWAYS load 100% */
         function createKillerSvgDataUrl(code, name, bg1='#3b0764', bg2='#991b1b') {
             const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
@@ -843,6 +854,71 @@ const DBD_KILLERS = [
             modalCard.classList.add('scale-90');
             modal.classList.add('opacity-0', 'pointer-events-none');
         }
+        // ฟังก์ชันสลับตำแหน่งข้อมูลแบบสุ่ม
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+// ฟังก์ชันสลับตำแหน่งอาเรย์พื้นฐาน (Fisher-Yates Shuffle)
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+// 1. ฟังก์ชันกดสลับตำแหน่งวงล้อหน้าแรก (Custom Wheel)
+function shuffleCustomWheel() {
+    const textarea = document.querySelector('textarea');
+    if (!textarea) {
+        alert('ไม่พบช่องกรอกรายชื่อ!');
+        return;
+    }
+
+    let items = textarea.value.split('\n').map(item => item.trim()).filter(item => item !== '');
+    if (items.length === 0) {
+        alert('มึงก็ใส่ชื่อก่อนดิวะ');
+        return;
+    }
+
+    shuffleArray(items);
+    textarea.value = items.join('\n');
+
+    if (typeof customItems !== 'undefined') {
+        customItems = items;
+    }
+
+    const countEl = document.getElementById('custom-count-text') || document.getElementById('count-text');
+    if (countEl) {
+        countEl.innerText = items.length;
+    }
+
+    if (typeof drawCustomWheel === 'function') {
+        drawCustomWheel();
+    }
+}
+
+// 2. ฟังก์ชันกดสลับตำแหน่งวงล้อ DbD Killers (หน้าสอง)
+function shuffleDbdWheel() {
+    if (typeof DBD_KILLERS === 'undefined' || DBD_KILLERS.length === 0) {
+        alert('ไม่พบข้อมูล Killer!');
+        return;
+    }
+
+    shuffleArray(DBD_KILLERS);
+
+    if (typeof renderDbdKillerGrid === 'function') {
+        renderDbdKillerGrid(DBD_KILLERS);
+    }
+
+    if (typeof drawDbdWheel === 'function') {
+        drawDbdWheel();
+    }
+}
     </script>
 </body>
 </html>
