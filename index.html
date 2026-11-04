@@ -476,6 +476,9 @@ const DBD_KILLERS = [
             updateCustomWheelFromTextarea();
         }
 
+        // ตัวแปรเก็บชุดสีประจำรอบของวงล้อหน้าแรก เพื่อป้องกันสีสลับกระพริบตอนหมุน
+        let customWheelColors = [];
+
         function drawCustomWheel() {
             const canvas = document.getElementById('customCanvas');
             if (!canvas) return;
@@ -511,6 +514,11 @@ const DBD_KILLERS = [
                 return;
             }
 
+            // ถ้าจำนวนช่องเปลี่ยน หรือยังไม่มีชุดสี ให้สุ่มสร้างสีใหม่เก็บไว้ครั้งเดียว
+            if (!customWheelColors || customWheelColors.length !== numItems) {
+                customWheelColors = customItems.map(() => COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)]);
+            }
+
             const arcSize = (2 * Math.PI) / numItems;
 
             for (let i = 0; i < numItems; i++) {
@@ -522,8 +530,9 @@ const DBD_KILLERS = [
                 ctx.moveTo(centerX, centerY);
                 ctx.arc(centerX, centerY, radius, startAngle, endAngle);
                 ctx.closePath();
-                // โค้ดใหม่ - สุ่มเลือกสีจากพาเลตต์ไม่ให้ซ้ำตำแหน่งเดิม
-                ctx.fillStyle = COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)];
+                
+                // ใช้สีจากอาเรย์ที่ล็อกไว้ ไม่สุ่มสดทุกเฟรม
+                ctx.fillStyle = customWheelColors[i];
                 ctx.fill();
 
                 // Slice Border
@@ -891,6 +900,9 @@ function shuffleCustomWheel() {
     if (typeof customItems !== 'undefined') {
         customItems = items;
     }
+
+    // <-- นำบรรทัดนี้มาวางไว้ตรงนี้ เพื่อล้างค่าสีเก่าให้สุ่มใหม่ตอนกดสลับ
+    customWheelColors = [];
 
     const countEl = document.getElementById('custom-count-text') || document.getElementById('count-text');
     if (countEl) {
