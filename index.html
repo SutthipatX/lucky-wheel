@@ -146,8 +146,8 @@
                     </h3>
                     <div class="flex gap-2">
                         <button onclick="shuffleCustomWheel()" class="bg-red-500 hover:bg-red-900 text-white px-4 py-2 rounded-lg font-medium transition flex items-center gap-2">
-    <i class="fa-solid fa-shuffle"></i> สลับ
-</button>
+                            <i class="fa-solid fa-shuffle"></i> สลับ
+                        </button>
                         <button onclick="resetCustomPresets()" class="text-xs bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1.5 rounded-lg border border-gray-700 transition">
                             <i class="fa-solid fa-rotate-left mr-1"></i> ค่าเริ่มต้น
                         </button>
@@ -195,22 +195,17 @@
                     <canvas id="dbdCanvas" class="w-full h-full rounded-full cursor-pointer transition-transform duration-100"></canvas>
                     
                     <!-- Center Spin Button & Live Preview Image -->
-            <button onclick="spinDbdWheel()" id="spin-dbd-btn"
-             
-                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-[#12141c] rounded-full border-4 border-[#ff2a5f] shadow-2xl hover:scale-105 active:scale-95 transition-all flex flex-col items-center justify-center overflow-hidden z-10 neon-glow-red group">
-                
-                <!-- Portrait Preview inside Center Circle -->
-
-                <img id="dbd-center-portrait" src="" 
-                    class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition" alt="Killer Preview">
-                
-                <div class="relative z-10 text-center flex flex-col items-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
-                    <span class="font-black text-white text-base tracking-wider">หมุน!</span>
-                    <i class="fa-solid fa-skull text-red-400 text-xs mt-0.5"></i>
-                </div>
-                
-            </button>
-        
+                    <button onclick="spinDbdWheel()" id="spin-dbd-btn"
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-[#12141c] rounded-full border-4 border-[#ff2a5f] shadow-2xl hover:scale-105 active:scale-95 transition-all flex flex-col items-center justify-center overflow-hidden z-10 neon-glow-red group">
+                        
+                        <img id="dbd-center-portrait" src="" 
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition" alt="Killer Preview">
+                        
+                        <div class="relative z-10 text-center flex flex-col items-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+                            <span class="font-black text-white text-base tracking-wider">หมุน!</span>
+                            <i class="fa-solid fa-skull text-red-400 text-xs mt-0.5"></i>
+                        </div>
+                    </button>
                 </div>
 
                 <!-- Info Note -->
@@ -227,8 +222,8 @@
                         <i class="fa-solid fa-users-slash text-red-500"></i> รายชื่อ Killer ทั้งหมด (45)
                     </h3>
                     <button onclick="shuffleDbdWheel()" class="mt-2 bg-red-500 hover:bg-red-900 text-white px-4 py-2 rounded-lg font-medium transition flex items-center gap-2 justify-center w-full">
-    <i class="fa-solid fa-shuffle"></i> สลับ
-</button>
+                        <i class="fa-solid fa-shuffle"></i> สลับ
+                    </button>
                 </div>
 
                 <!-- Search Input -->
@@ -241,7 +236,6 @@
 
                 <!-- Scrollable Grid of 45 Killers -->
                 <div id="dbd-killer-grid" class="max-h-[460px] overflow-y-auto grid grid-cols-2 sm:grid-cols-3 gap-2.5 pr-1">
-                    <!-- Dynamic Items will be rendered here by JS -->
                 </div>
             </div>
         </section>
@@ -258,7 +252,6 @@
     <div id="result-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none transition-all duration-300">
         <div id="modal-card" class="bg-[#161824] border border-gray-700 rounded-3xl max-w-md w-full p-6 text-center transform scale-90 transition-all duration-300 shadow-2xl relative overflow-hidden">
             
-            <!-- Glow Accent Background -->
             <div id="modal-glow" class="absolute -top-20 left-1/2 -translate-x-1/2 w-40 h-40 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
             <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl transition">
@@ -269,24 +262,20 @@
                 ผลการสุ่มวงล้อ
             </div>
 
-            <!-- Winner Title -->
             <h2 id="modal-title" class="text-2xl font-black text-white mb-4">
                 RESULT
             </h2>
 
-            <!-- Winner Image (DbD Killer Image Container) -->
             <div id="modal-image-container" class="hidden my-4 relative justify-center items-center">
                 <div class="w-44 h-44 rounded-2xl p-1 bg-gradient-to-b from-red-500/80 to-transparent shadow-xl relative overflow-hidden border border-red-500/40">
                     <img id="modal-killer-img" src="" class="w-full h-full object-cover rounded-xl" alt="Winner Portrait">
                 </div>
             </div>
 
-            <!-- Winner Display Name -->
             <div id="modal-winner-name" class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-amber-300 to-red-500 my-2 drop-shadow-md">
                 -
             </div>
 
-            <!-- Action Buttons for Custom Wheel Mode -->
             <div id="modal-custom-actions" class="mt-6 grid grid-cols-2 gap-3 hidden">
                 <button onclick="handleModalRemoveChoice(true)" 
                     class="py-2.5 px-4 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-sm shadow-lg transition active:scale-95 flex items-center justify-center gap-2">
@@ -298,7 +287,6 @@
                 </button>
             </div>
 
-            <!-- Action Buttons for DbD Wheel Mode -->
             <div id="modal-dbd-actions" class="mt-6 flex justify-center">
                 <button onclick="closeModal()" 
                     class="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white font-bold text-sm shadow-lg transition active:scale-95 flex items-center justify-center gap-2">
@@ -311,8 +299,11 @@
 
     <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
-        // ฟังก์ชันสลับตำแหน่งข้อมูลในอาร์เรย์แบบสุ่ม (วางไว้บนสุดของแท็ก script)
-        /* Helper function to generate SVG Data URLs for Killers so images ALWAYS load 100% */
+        // -------------------------------------------------------------
+        // จุดที่เพิ่มที่ 1: กำหนดชื่อ Key สำหรับบันทึกข้อมูลในเครื่อง
+        // -------------------------------------------------------------
+        const STORAGE_KEY = 'survivors_wheel_data_v1';
+
         function createKillerSvgDataUrl(code, name, bg1='#3b0764', bg2='#991b1b') {
             const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
                 <defs>
@@ -330,99 +321,95 @@
             return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
         }
 
-        /* -------------------------------------------------------------
-           1. DBD KILLERS DATA (FULL 45 ITEMS MATCHING CONTEXT)
-           ------------------------------------------------------------- */
-        // ตัวอย่างการตั้งค่าอาร์เรย์ killers ใน index.html
-// วางชุดข้อมูลนี้ไว้ในแท็ก <script> ของไฟล์ index.html
-const DBD_KILLERS = [
-  { id: "Trapper", name: "The Trapper", file: "images/1.webp" },
-  { id: "Wraith", name: "The Wraith", file: "images/2.webp" },
-  { id: "Hillbilly", name: "The Hillbilly", file: "images/3.webp" },
-  { id: "Nurse", name: "The Nurse", file: "images/4.webp" },
-  { id: "Shape", name: "The Shape", file: "images/5.webp" },
-  { id: "Hag", name: "The Hag", file: "images/6.webp" },
-  { id: "Doctor", name: "The Doctor", file: "images/7.webp" },
-  { id: "Huntress", name: "The Huntress", file: "images/8.webp" },
-  { id: "Cannibal", name: "The Cannibal", file: "images/9.webp" },
-  { id: "Nightmare", name: "The Nightmare", file: "images/10.webp" },
-  { id: "Pig", name: "The Pig", file: "images/11.webp" },
-  { id: "Clown", name: "The Clown", file: "images/12.webp" },
-  { id: "Spirit", name: "The Spirit", file: "images/13.webp" },
-  { id: "Legion", name: "The Legion", file: "images/14.webp" },
-  { id: "Plague", name: "The Plague", file: "images/15.webp" },
-  { id: "GhostFace", name: "The Ghost Face", file: "images/16.webp" },
-  { id: "Demogorgon", name: "The Demogorgon", file: "images/17.webp" },
-  { id: "Oni", name: "The Oni", file: "images/18.webp" },
-  { id: "Deathslinger", name: "The Deathslinger", file: "images/19.webp" },
-  { id: "Executioner", name: "The Executioner", file: "images/20.webp" },
-  { id: "Blight", name: "The Blight", file: "images/21.webp" },
-  { id: "Twins", name: "The Twins", file: "images/22.webp" },
-  { id: "Trickster", name: "The Trickster", file: "images/23.webp" },
-  { id: "Nemesis", name: "The Nemesis", file: "images/24.webp" },
-  { id: "Cenobite", name: "The Cenobite", file: "images/25.webp" },
-  { id: "Artist", name: "The Artist", file: "images/26.webp" },
-  { id: "Onryō", name: "The Onryō", file: "images/27.webp" },
-  { id: "Dredge", name: "The Dredge", file: "images/28.webp" },
-  { id: "Mastermind", name: "The Mastermind", file: "images/29.webp" },
-  { id: "Knight", name: "The Knight", file: "images/30.webp" },
-  { id: "SkullMerchant", name: "The Skull Merchant", file: "images/31.webp" },
-  { id: "Singularity", name: "The Singularity", file: "images/32.webp" },
-  { id: "Xenomorph", name: "The Xenomorph", file: "images/33.webp" },
-  { id: "GoodGuy", name: "The Good Guy", file: "images/34.webp" },
-  { id: "Unknown", name: "The Unknown", file: "images/35.jpg" },
-  { id: "Lich", name: "The Lich", file: "images/36.webp" },
-  { id: "DarkLord", name: "The Dark Lord", file: "images/37.webp" },
-  { id: "Houndmaster", name: "The Houndmaster", file: "images/38.webp" },
-  { id: "Ghoul", name: "The Ghoul", file: "images/39.webp" },
-  { id: "Animatronic", name: "The Animatronic", file: "images/40.webp" },
-  { id: "Krasue", name: "The Krasue", file: "images/41.webp" },
-  { id: "First", name: "The First", file: "images/42.png" },
-  { id: "Slasher", name: "The Slasher", file: "images/43.png" },
-  { id: "Judgment", name: "The Judgment", file: "images/44.png" },
-  { id: "Terrifier", name: "The Terrifier", file: "images/45.png" }
-];
-        /* Vibrant Dark Palette */
+        const DBD_KILLERS = [
+          { id: "Trapper", name: "The Trapper", file: "images/1.webp" },
+          { id: "Wraith", name: "The Wraith", file: "images/2.webp" },
+          { id: "Hillbilly", name: "The Hillbilly", file: "images/3.webp" },
+          { id: "Nurse", name: "The Nurse", file: "images/4.webp" },
+          { id: "Shape", name: "The Shape", file: "images/5.webp" },
+          { id: "Hag", name: "The Hag", file: "images/6.webp" },
+          { id: "Doctor", name: "The Doctor", file: "images/7.webp" },
+          { id: "Huntress", name: "The Huntress", file: "images/8.webp" },
+          { id: "Cannibal", name: "The Cannibal", file: "images/9.webp" },
+          { id: "Nightmare", name: "The Nightmare", file: "images/10.webp" },
+          { id: "Pig", name: "The Pig", file: "images/11.webp" },
+          { id: "Clown", name: "The Clown", file: "images/12.webp" },
+          { id: "Spirit", name: "The Spirit", file: "images/13.webp" },
+          { id: "Legion", name: "The Legion", file: "images/14.webp" },
+          { id: "Plague", name: "The Plague", file: "images/15.webp" },
+          { id: "GhostFace", name: "The Ghost Face", file: "images/16.webp" },
+          { id: "Demogorgon", name: "The Demogorgon", file: "images/17.webp" },
+          { id: "Oni", name: "The Oni", file: "images/18.webp" },
+          { id: "Deathslinger", name: "The Deathslinger", file: "images/19.webp" },
+          { id: "Executioner", name: "The Executioner", file: "images/20.webp" },
+          { id: "Blight", name: "The Blight", file: "images/21.webp" },
+          { id: "Twins", name: "The Twins", file: "images/22.webp" },
+          { id: "Trickster", name: "The Trickster", file: "images/23.webp" },
+          { id: "Nemesis", name: "The Nemesis", file: "images/24.webp" },
+          { id: "Cenobite", name: "The Cenobite", file: "images/25.webp" },
+          { id: "Artist", name: "The Artist", file: "images/26.webp" },
+          { id: "Onryō", name: "The Onryō", file: "images/27.webp" },
+          { id: "Dredge", name: "The Dredge", file: "images/28.webp" },
+          { id: "Mastermind", name: "The Mastermind", file: "images/29.webp" },
+          { id: "Knight", name: "The Knight", file: "images/30.webp" },
+          { id: "SkullMerchant", name: "The Skull Merchant", file: "images/31.webp" },
+          { id: "Singularity", name: "The Singularity", file: "images/32.webp" },
+          { id: "Xenomorph", name: "The Xenomorph", file: "images/33.webp" },
+          { id: "GoodGuy", name: "The Good Guy", file: "images/34.webp" },
+          { id: "Unknown", name: "The Unknown", file: "images/35.jpg" },
+          { id: "Lich", name: "The Lich", file: "images/36.webp" },
+          { id: "DarkLord", name: "The Dark Lord", file: "images/37.webp" },
+          { id: "Houndmaster", name: "The Houndmaster", file: "images/38.webp" },
+          { id: "Ghoul", name: "The Ghoul", file: "images/39.webp" },
+          { id: "Animatronic", name: "The Animatronic", file: "images/40.webp" },
+          { id: "Krasue", name: "The Krasue", file: "images/41.webp" },
+          { id: "First", name: "The First", file: "images/42.png" },
+          { id: "Slasher", name: "The Slasher", file: "images/43.png" },
+          { id: "Judgment", name: "The Judgment", file: "images/44.png" },
+          { id: "Terrifier", name: "The Terrifier", file: "images/45.png" }
+        ];
+
         const COLOR_PALETTE = [
             '#1a103c', '#112233', '#2d1235', '#162b32', '#2c161c',
             '#1f1340', '#122620', '#321422', '#1b1b2f', '#251638',
             '#10202b', '#2d1b2d', '#182430', '#301818', '#1a2238'
         ];
 
-        /* -------------------------------------------------------------
-           2. GLOBAL STATE VARIABLES
-           ------------------------------------------------------------- */
-        let currentTab = 'custom'; // 'custom' | 'dbd'
-        
-        // Custom Wheel State
+        let currentTab = 'custom';
         let customItems = [];
         let customAngle = 0;
         let isCustomSpinning = false;
         let lastSelectedCustomIndex = -1;
 
-        // DbD Wheel State
         let dbdAngle = 0;
         let isDbdSpinning = false;
         let dbdCenterInterval = null;
 
-        /* -------------------------------------------------------------
-           3. INITIALIZATION & TAB SWITCHING
-           ------------------------------------------------------------- */
+        // -------------------------------------------------------------
+        // จุดที่แก้ไขที่ 2: ปรับปรุง window.onload ให้โหลดข้อมูลจาก localStorage
+        // -------------------------------------------------------------
         window.onload = function() {
-            // Setup Textarea
+            const savedData = localStorage.getItem(STORAGE_KEY);
+            if (savedData) {
+                try {
+                    customItems = JSON.parse(savedData);
+                } catch (e) {
+                    customItems = ["แมกซ", "ปอน", "ตี๋", "ซัน", "ตั๋ง"];
+                }
+            } else {
+                customItems = ["แมกซ", "ปอน", "ตี๋", "ซัน", "ตั๋ง"];
+            }
+
             document.getElementById('custom-items-input').value = customItems.join('\n');
+            document.getElementById('custom-count-text').innerText = customItems.length;
             
-            // Set initial center portrait
             document.getElementById('dbd-center-portrait').src = DBD_KILLERS[0].file;
 
-            // Render DbD List UI
             renderDbdKillerGrid(DBD_KILLERS);
 
-            // Draw Initial Canvas Wheels
             drawCustomWheel();
             drawDbdWheel();
 
-            // Handle Resize
             window.addEventListener('resize', () => {
                 drawCustomWheel();
                 drawDbdWheel();
@@ -432,7 +419,7 @@ const DBD_KILLERS = [
         function switchTab(tab) {
             currentTab = tab;
             const customTabEl = document.getElementById('tab-custom');
-            const dbdTabEl = document.getElementById('tab-[#tab-dbd]') || document.getElementById('tab-dbd');
+            const dbdTabEl = document.getElementById('tab-dbd');
             const customBtn = document.getElementById('tab-custom-btn');
             const dbdBtn = document.getElementById('tab-dbd-btn');
 
@@ -455,29 +442,39 @@ const DBD_KILLERS = [
             }
         }
 
-        /* -------------------------------------------------------------
-           4. CUSTOM WHEEL ENGINE
-           ------------------------------------------------------------- */
+        // -------------------------------------------------------------
+        // จุดที่แก้ไขที่ 3: บันทึกลง localStorage ทันทีที่พิมพ์หรือแก้ไขข้อมูล
+        // -------------------------------------------------------------
         function updateCustomWheelFromTextarea() {
             const text = document.getElementById('custom-items-input').value;
             customItems = text.split('\n').map(item => item.trim()).filter(item => item.length > 0);
             document.getElementById('custom-count-text').innerText = customItems.length;
+            
+            // บันทึกข้อมูลลงเครื่องผู้ใช้อัตโนมัติ
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(customItems));
+            
             drawCustomWheel();
         }
 
         function resetCustomPresets() {
-            customItems = ["แมกซ", "ปอน", "ตี๋", "ซัน", "ตั๋ง",];
+            customItems = ["แมกซ", "ปอน", "ตี๋", "ซัน", "ตั๋ง"];
             document.getElementById('custom-items-input').value = customItems.join('\n');
             updateCustomWheelFromTextarea();
         }
 
+        // -------------------------------------------------------------
+        // จุดที่แก้ไขที่ 4: ลบข้อมูลออกจาก localStorage เมื่อกดล้างทั้งหมด
+        // -------------------------------------------------------------
         function clearCustomList() {
             customItems = [];
             document.getElementById('custom-items-input').value = '';
+            
+            // ลบข้อมูลที่เซฟไว้
+            localStorage.removeItem(STORAGE_KEY);
+            
             updateCustomWheelFromTextarea();
         }
 
-        // ตัวแปรเก็บชุดสีประจำรอบของวงล้อหน้าแรก เพื่อป้องกันสีสลับกระพริบตอนหมุน
         let customWheelColors = [];
 
         function drawCustomWheel() {
@@ -485,7 +482,6 @@ const DBD_KILLERS = [
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             
-            // Set High DPI resolution
             const rect = canvas.getBoundingClientRect();
             canvas.width = rect.width * 2;
             canvas.height = rect.height * 2;
@@ -498,7 +494,6 @@ const DBD_KILLERS = [
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             if (numItems === 0) {
-                // Empty State
                 ctx.beginPath();
                 ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
                 ctx.fillStyle = '#1e202e';
@@ -515,7 +510,6 @@ const DBD_KILLERS = [
                 return;
             }
 
-            // ถ้าจำนวนช่องเปลี่ยน หรือยังไม่มีชุดสี ให้สุ่มสร้างสีใหม่เก็บไว้ครั้งเดียว
             if (!customWheelColors || customWheelColors.length !== numItems) {
                 customWheelColors = customItems.map(() => COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)]);
             }
@@ -526,22 +520,18 @@ const DBD_KILLERS = [
                 const startAngle = customAngle + i * arcSize;
                 const endAngle = startAngle + arcSize;
 
-                // Draw Slice
                 ctx.beginPath();
                 ctx.moveTo(centerX, centerY);
                 ctx.arc(centerX, centerY, radius, startAngle, endAngle);
                 ctx.closePath();
                 
-                // ใช้สีจากอาเรย์ที่ล็อกไว้ ไม่สุ่มสดทุกเฟรม
                 ctx.fillStyle = customWheelColors[i];
                 ctx.fill();
 
-                // Slice Border
                 ctx.strokeStyle = '#12141c';
                 ctx.lineWidth = 4;
                 ctx.stroke();
 
-                // Draw Text
                 ctx.save();
                 ctx.translate(centerX, centerY);
                 ctx.rotate(startAngle + arcSize / 2);
@@ -551,7 +541,6 @@ const DBD_KILLERS = [
                 ctx.shadowColor = 'rgba(0,0,0,0.6)';
                 ctx.shadowBlur = 6;
                 
-                // Truncate text if too long
                 let text = customItems[i];
                 if (text.length > 14) text = text.substring(0, 12) + '..';
                 
@@ -559,7 +548,6 @@ const DBD_KILLERS = [
                 ctx.restore();
             }
 
-            // Outer Glow Ring
             ctx.beginPath();
             ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
             ctx.strokeStyle = '#00e5ff';
@@ -577,19 +565,17 @@ const DBD_KILLERS = [
             isCustomSpinning = true;
             document.getElementById('spin-custom-btn').disabled = true;
 
-            const duration = 4000 + Math.random() * 2000; // 4 - 6 seconds
+            const duration = 4000 + Math.random() * 2000;
             const startTimestamp = performance.now();
             const initialAngle = customAngle;
-            // Total rotations + random offset
-            const spins = Math.floor(Math.random() * 5) + 10; // จำนวนรอบหมุนเต็มๆ
-            const randomOffset = Math.random() * 2 * Math.PI;  // เพิ่มเศษมุมสุ่มแบบอิสระ
+            const spins = Math.floor(Math.random() * 5) + 10;
+            const randomOffset = Math.random() * 2 * Math.PI;
             const totalRotation = (spins * 2 * Math.PI) + randomOffset;
 
             function animate(now) {
                 const elapsed = now - startTimestamp;
                 const progress = Math.min(elapsed / duration, 1);
                 
-                // Cubic Ease Out
                 const easeOut = 1 - Math.pow(1 - progress, 3);
                 customAngle = initialAngle + totalRotation * easeOut;
 
@@ -611,7 +597,6 @@ const DBD_KILLERS = [
             const numItems = customItems.length;
             const arcSize = (2 * Math.PI) / numItems;
             
-            // Pointer is at Top (3 * Math.PI / 2 radians or 270 degrees)
             const normalizedAngle = (customAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
             let pointerAngle = (3 * Math.PI / 2 - normalizedAngle) % (2 * Math.PI);
             if (pointerAngle < 0) pointerAngle += 2 * Math.PI;
@@ -619,10 +604,8 @@ const DBD_KILLERS = [
             lastSelectedCustomIndex = Math.floor(pointerAngle / arcSize) % numItems;
             const winningText = customItems[lastSelectedCustomIndex];
 
-            // Trigger Confetti
             confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
 
-            // Show Result Modal
             showModal({
                 title: 'ผลการสุ่ม',
                 subtitle: '',
@@ -632,18 +615,16 @@ const DBD_KILLERS = [
             });
         }
 
+        // เมื่อกดปุ่ม "เอาออก" จากผลการสุ่ม จะบันทึกอัปเดตเซฟใหม่ทันที
         function handleModalRemoveChoice(remove) {
             if (remove && lastSelectedCustomIndex !== -1 && lastSelectedCustomIndex < customItems.length) {
                 customItems.splice(lastSelectedCustomIndex, 1);
                 document.getElementById('custom-items-input').value = customItems.join('\n');
-                updateCustomWheelFromTextarea();
+                updateCustomWheelFromTextarea(); // ฟังก์ชันนี้จะอัปเดตและเซฟให้อัตโนมัติ
             }
             closeModal();
         }
 
-        /* -------------------------------------------------------------
-           5. DBD KILLERS WHEEL ENGINE (45 KILLERS)
-           ------------------------------------------------------------- */
         function drawDbdWheel() {
             const canvas = document.getElementById('dbdCanvas');
             if (!canvas) return;
@@ -666,7 +647,6 @@ const DBD_KILLERS = [
                 const startAngle = dbdAngle + i * arcSize;
                 const endAngle = startAngle + arcSize;
 
-                // Alternate dark bloody colors
                 ctx.beginPath();
                 ctx.moveTo(centerX, centerY);
                 ctx.arc(centerX, centerY, radius, startAngle, endAngle);
@@ -678,7 +658,6 @@ const DBD_KILLERS = [
                 ctx.lineWidth = 1.5;
                 ctx.stroke();
 
-                // Text
                 ctx.save();
                 ctx.translate(centerX, centerY);
                 ctx.rotate(startAngle + arcSize / 2);
@@ -686,13 +665,11 @@ const DBD_KILLERS = [
                 ctx.fillStyle = '#ffb3c1';
                 ctx.font = 'bold 15px Prompt';
                 
-                // Truncate killer name for high density wheel
                 let text = DBD_KILLERS[i].name.replace('The ', '');
                 ctx.fillText(text, radius - 20, 5);
                 ctx.restore();
             }
 
-            // Outer Neon Border
             ctx.beginPath();
             ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
             ctx.strokeStyle = '#ff2a5f';
@@ -706,7 +683,6 @@ const DBD_KILLERS = [
             isDbdSpinning = true;
             document.getElementById('spin-dbd-btn').disabled = true;
 
-            // Start Center Image Rapid Switching Effect
             const centerImgEl = document.getElementById('dbd-center-portrait');
             dbdCenterInterval = setInterval(() => {
                 const randomKiller = DBD_KILLERS[Math.floor(Math.random() * DBD_KILLERS.length)];
@@ -716,8 +692,8 @@ const DBD_KILLERS = [
             const duration = 4500 + Math.random() * 2000;
             const startTimestamp = performance.now();
             const initialAngle = dbdAngle;
-            const spins = Math.floor(Math.random() * 5) + 12; // จำนวนรอบหมุนเต็มๆ
-            const randomOffset = Math.random() * 2 * Math.PI;  // เพิ่มเศษมุมสุ่มแบบอิสระ
+            const spins = Math.floor(Math.random() * 5) + 12;
+            const randomOffset = Math.random() * 2 * Math.PI;
             const totalRotation = (spins * 2 * Math.PI) + randomOffset;
 
             function animate(now) {
@@ -753,10 +729,8 @@ const DBD_KILLERS = [
             const winningIndex = Math.floor(pointerAngle / arcSize) % numItems;
             const winner = DBD_KILLERS[winningIndex];
 
-            // Set Center Portrait to Winner
             document.getElementById('dbd-center-portrait').src = winner.file;
 
-            // Trigger Red Confetti
             confetti({
                 particleCount: 100,
                 spread: 90,
@@ -764,7 +738,6 @@ const DBD_KILLERS = [
                 colors: ['#ff2a5f', '#ff0000', '#ffffff', '#800000']
             });
 
-            // Show Modal Popup
             showModal({
                 title: 'KILLER SELECT',
                 subtitle: 'ฆาตกรที่ได้คือ',
@@ -774,9 +747,6 @@ const DBD_KILLERS = [
             });
         }
 
-        /* -------------------------------------------------------------
-           6. DBD KILLER DIRECTORY & FILTER UI
-           ------------------------------------------------------------- */
         function renderDbdKillerGrid(list) {
             const gridContainer = document.getElementById('dbd-killer-grid');
             gridContainer.innerHTML = '';
@@ -785,7 +755,6 @@ const DBD_KILLERS = [
                 const card = document.createElement('div');
                 card.className = "bg-[#161824] p-2 rounded-xl border border-gray-800 hover:border-red-500/50 transition flex items-center gap-2 group cursor-pointer";
                 card.onclick = () => {
-                    // Preview modal when clicking list item
                     showModal({
                         title: 'Killer',
                         subtitle: killer.id,
@@ -817,9 +786,6 @@ const DBD_KILLERS = [
             renderDbdKillerGrid(filtered);
         }
 
-        /* -------------------------------------------------------------
-           7. MODAL DIALOG CONTROLLER
-           ------------------------------------------------------------- */
         function showModal({ title, subtitle, winnerName, isDbd, imageUrl }) {
             const modal = document.getElementById('result-modal');
             const modalCard = document.getElementById('modal-card');
@@ -864,74 +830,39 @@ const DBD_KILLERS = [
             modalCard.classList.add('scale-90');
             modal.classList.add('opacity-0', 'pointer-events-none');
         }
-        // ฟังก์ชันสลับตำแหน่งข้อมูลแบบสุ่ม
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
-// ฟังก์ชันสลับตำแหน่งอาเรย์พื้นฐาน (Fisher-Yates Shuffle)
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
 
-// 1. ฟังก์ชันกดสลับตำแหน่งวงล้อหน้าแรก (Custom Wheel)
-function shuffleCustomWheel() {
-    const textarea = document.querySelector('textarea');
-    if (!textarea) {
-        alert('ไม่พบช่องกรอกรายชื่อ!');
-        return;
-    }
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
 
-    let items = textarea.value.split('\n').map(item => item.trim()).filter(item => item !== '');
-    if (items.length === 0) {
-        alert('มึงก็ใส่ชื่อก่อนดิวะ');
-        return;
-    }
+        // เมื่อกดปุ่มสลับ (Shuffle) จะบันทึกการจัดเรียงใหม่ลงเซฟด้วยอัตโนมัติ
+        function shuffleCustomWheel() {
+            const textarea = document.getElementById('custom-items-input');
+            if (!textarea) return;
 
-    shuffleArray(items);
-    textarea.value = items.join('\n');
+            let items = textarea.value.split('\n').map(item => item.trim()).filter(item => item !== '');
+            if (items.length === 0) {
+                alert('มึงก็ใส่ชื่อก่อนดิวะ');
+                return;
+            }
 
-    if (typeof customItems !== 'undefined') {
-        customItems = items;
-    }
+            shuffleArray(items);
+            textarea.value = items.join('\n');
+            
+            // เรียกใช้ฟังก์ชันนี้เพื่ออัปเดตและสั่งเซฟลง localStorage ทันที
+            updateCustomWheelFromTextarea();
+        }
 
-    // <-- นำบรรทัดนี้มาวางไว้ตรงนี้ เพื่อล้างค่าสีเก่าให้สุ่มใหม่ตอนกดสลับ
-    customWheelColors = [];
-
-    const countEl = document.getElementById('custom-count-text') || document.getElementById('count-text');
-    if (countEl) {
-        countEl.innerText = items.length;
-    }
-
-    if (typeof drawCustomWheel === 'function') {
-        drawCustomWheel();
-    }
-}
-
-// 2. ฟังก์ชันกดสลับตำแหน่งวงล้อ DbD Killers (หน้าสอง)
-function shuffleDbdWheel() {
-    if (typeof DBD_KILLERS === 'undefined' || DBD_KILLERS.length === 0) {
-        alert('ไม่พบข้อมูล Killer!');
-        return;
-    }
-
-    shuffleArray(DBD_KILLERS);
-
-    if (typeof renderDbdKillerGrid === 'function') {
-        renderDbdKillerGrid(DBD_KILLERS);
-    }
-
-    if (typeof drawDbdWheel === 'function') {
-        drawDbdWheel();
-    }
-}
+        function shuffleDbdWheel() {
+            if (typeof DBD_KILLERS === 'undefined' || DBD_KILLERS.length === 0) return;
+            shuffleArray(DBD_KILLERS);
+            renderDbdKillerGrid(DBD_KILLERS);
+            drawDbdWheel();
+        }
     </script>
 </body>
 </html>
